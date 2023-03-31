@@ -21,18 +21,23 @@ function index() {
         setnowPlaying(data.data[3].movies)
       },
   }) 
+
+  console.log(trendingMovies)
   if (isLoading) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
 
   return (
       <div className='px-3'>
-          <Splide options={{fixedWidth: "176px"}}>
+        <h2>Trending Movies</h2>
+          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide'}}>
+            
     {trendingMovies.map((movie) => (
             <SplideSlide key={movie.id}>
-            <div className="flex flex-col w-44 h-52 bg-slate-300">
-              {movie.id}
-            </div>
+              <img src={movie.poster_path} width={500} height={500} alt="none"/>
+            {/* <div className="flex flex-col w-44 h-52 bg-slate-300 gap-4 rounded text-sm"> */}
+              {/* {movie} */}
+            {/* </div> */}
           </SplideSlide>
         ))}
         </Splide> 
