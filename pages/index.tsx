@@ -1,7 +1,7 @@
 import React , {useState} from 'react'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { Options, Splide, SplideSlide } from '@splidejs/react-splide';
 
 function index() {
   const [trendingMovies ,setTrendingMovies] = useState([])
@@ -11,8 +11,8 @@ function index() {
 
   
 
-const options: SplideOptions = {
-      direction: 'ltr'
+const options: Options = {
+  direction: 'ltr',
 };
   
 
@@ -34,18 +34,24 @@ const options: SplideOptions = {
 
   if (error) return 'An error has occurred: ' + error.message
 
-
   return (
-    <div>
-
+    <div className='px-3'>
 {trendingMovies.map((movie) => (
-  <Splide aria-labeledby="Trending Movie's" options={options}>
+  <Splide options={options.direction}>
     <SplideSlide>
     {movie?.original_title}
   </SplideSlide> 
   </Splide> 
- ))}
-       
+ ))}      
+ <br />
+
+ {topRatedMovies.map((movie) => (
+  <Splide options={options.direction}>
+    <SplideSlide>
+    {movie?.original_title}
+  </SplideSlide> 
+  </Splide> 
+ ))} 
     </div>
   )
 }
