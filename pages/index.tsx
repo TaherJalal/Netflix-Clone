@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css/core';
+import Image from 'next/image';
 
 function index() {
   const [trendingMovies ,setTrendingMovies] = useState([])
@@ -31,13 +32,10 @@ function index() {
 
         <h2 className='text-2xl'>Trending Movie's</h2>
           <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 200}}>
-            
+
     {trendingMovies.map((movie) => (
             <SplideSlide key={movie.id}>
-              <img src={movie.poster_path} width={500} height={500} alt="none"/>
-            {/* <div className="flex flex-col w-44 h-52 bg-slate-300 gap-4 rounded text-sm"> */}
-              {/* {movie} */}
-            {/* </div> */}
+              <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true}/>
           </SplideSlide>
         ))}
         </Splide> 
@@ -47,10 +45,7 @@ function index() {
             
     {topRatedMovies.map((movie) => (
             <SplideSlide key={movie.id}>
-              <img src={movie.poster_path} width={500} height={500} alt="none"/>
-            {/* <div className="flex flex-col w-44 h-52 bg-slate-300 gap-4 rounded text-sm"> */}
-              {/* {movie} */}
-            {/* </div> */}
+              <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true}/>
           </SplideSlide>
         ))}
         </Splide> 
@@ -61,10 +56,7 @@ function index() {
             
     {upcomingMovies.map((movie) => (
             <SplideSlide key={movie.id}>
-              <img src={movie.poster_path} width={500} height={500} alt="none"/>
-            {/* <div className="flex flex-col w-44 h-52 bg-slate-300 gap-4 rounded text-sm"> */}
-              {/* {movie} */}
-            {/* </div> */}
+              <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true}/>
           </SplideSlide>
         ))}
         </Splide> 
@@ -75,15 +67,10 @@ function index() {
             
     {nowPlaying.map((movie) => (
             <SplideSlide key={movie.id}>
-              <img src={movie.poster_path} width={500} height={500} alt="none"/>
-            {/* <div className="flex flex-col w-44 h-52 bg-slate-300 gap-4 rounded text-sm"> */}
-              {/* {movie} */}
-            {/* </div> */}
+              <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true}/>
           </SplideSlide>
         ))}
         </Splide> 
-
-
 
     </div>
   );
