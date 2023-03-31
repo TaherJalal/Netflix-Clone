@@ -29,10 +29,23 @@ function index() {
 
   return (
       <div className='px-3'>
-        <h2>Trending Movies</h2>
+        <h2>Trending Movie's</h2>
           <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide'}}>
             
     {trendingMovies.map((movie) => (
+            <SplideSlide key={movie.id}>
+              <img src={movie.poster_path} width={500} height={500} alt="none"/>
+            {/* <div className="flex flex-col w-44 h-52 bg-slate-300 gap-4 rounded text-sm"> */}
+              {/* {movie} */}
+            {/* </div> */}
+          </SplideSlide>
+        ))}
+        </Splide> 
+
+        <h2>Top Rated Movie's</h2>
+          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide'}}>
+            
+    {topRatedMovies.map((movie) => (
             <SplideSlide key={movie.id}>
               <img src={movie.poster_path} width={500} height={500} alt="none"/>
             {/* <div className="flex flex-col w-44 h-52 bg-slate-300 gap-4 rounded text-sm"> */}
