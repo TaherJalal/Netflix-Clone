@@ -22,15 +22,15 @@ function index() {
       },
   }) 
 
-  console.log(trendingMovies)
   if (isLoading) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
 
   return (
-      <div className='px-3'>
-        <h2>Trending Movie's</h2>
-          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide'}}>
+      <div className='px-3 py-3'>
+
+        <h2 className='text-2xl'>Trending Movie's</h2>
+          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 200}}>
             
     {trendingMovies.map((movie) => (
             <SplideSlide key={movie.id}>
@@ -42,8 +42,8 @@ function index() {
         ))}
         </Splide> 
 
-        <h2>Top Rated Movie's</h2>
-          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide'}}>
+        <h2 className='text-2xl'>Top Rated Movie's</h2>
+          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' ,rewindSpeed: 400}}>
             
     {topRatedMovies.map((movie) => (
             <SplideSlide key={movie.id}>
@@ -56,8 +56,8 @@ function index() {
         </Splide> 
 
 
-        <h2>Upcoming Movie's</h2>
-          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide'}}>
+        <h2 className='text-2xl'>Upcoming Movie's</h2>
+          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 300}}>
             
     {upcomingMovies.map((movie) => (
             <SplideSlide key={movie.id}>
@@ -70,8 +70,8 @@ function index() {
         </Splide> 
 
 
-        <h2>Now Playing Movie's</h2>
-          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide'}}>
+        <h2 className='text-2xl'>Now Playing Movie's</h2>
+          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 200}}>
             
     {nowPlaying.map((movie) => (
             <SplideSlide key={movie.id}>
