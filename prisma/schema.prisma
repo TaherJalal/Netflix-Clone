@@ -1,0 +1,74 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  DEFAULT
+}
+
+model User {
+  id           String      @id @default(auto()) @map("_id") @db.ObjectId
+  firstName    String
+  lastName     String
+  emailAddress String      @unique
+  password     String
+  balance      Float       @default(100)
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+  wishlist     wishlist?
+  purchases    Purchases[]
+  reviews      review[]
+  cart         Cart?
+  role         Role        @default(DEFAULT)
+}
+
+model wishlist {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  user      User     @relation(fields: [userID], references: [id], onDelete: Cascade)
+  userID    String   @unique @db.ObjectId
+  moviesIDs String[]
+}
+
+model Purchases {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  user      User     @relation(fields: [userID], references: [id], onDelete: Cascade)
+  userID    String   @db.ObjectId
+  moviesIDs String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  amount    Float
+}
+
+model review {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  user    User   @relation(fields: [userID], references: [id], onDelete: Cascade)
+  userID  String @unique @db.ObjectId
+  movieID String
+  rate    Int
+  comment String
+}
+
+model Cart {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  user      User     @relation(fields: [userID], references: [id], onDelete: Cascade)
+  userID    String   @unique @db.ObjectId
+  moviesIDs String[]
+}
+
+model Discount {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userID String @db.ObjectId
+  amount Float  @default(30)
+  code   String
+}
+
+model Movie {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  price Float  @default(10)
+}
