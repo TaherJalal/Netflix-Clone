@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css/core';
 import Image from 'next/image';
+import Nav from './Components/Nav';
 
 function index() {
   const [trendingMovies ,setTrendingMovies] = useState([])
@@ -28,7 +29,9 @@ function index() {
   if (error) return 'An error has occurred: ' + error.message
 
   return (
-      <div className='px-3 py-3'>
+    <>
+    <Nav />
+      <div className='px-2 py-3'>
 
         <h2 className='text-2xl'>Trending Movie's</h2>
           <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 200}}>
@@ -73,6 +76,7 @@ function index() {
         </Splide> 
 
     </div>
+    </>
   );
 }
 
