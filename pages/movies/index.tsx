@@ -2,7 +2,7 @@ import React from 'react'
 
 function index() {
   return (
-    <div className='fonts-montserrat'>movie index</div>
+    <div className='font-montserrat'>movie index</div>
   )
 }
 
