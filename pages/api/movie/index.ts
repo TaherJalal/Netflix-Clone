@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { prisma } from "@/lib/prisma";
-import authUser from "@/helpers/auth";
+import authUser from "../../../helper/authuser";
 
 const API_KEY = process.env.API_KEY;
 
