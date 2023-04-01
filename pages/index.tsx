@@ -33,7 +33,7 @@ function index() {
     <Nav />
       <div className='px-2 py-3'>
 
-        <h2 className='text-2xl'>Trending Movie's</h2>
+        <h2 className='sm:text-sm md:text-base lg:text-lg xl:text-2lg 2xl:text-2lg text-2xl '>Trending Movie's</h2>
           <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 200}}>
 
     {trendingMovies.map((movie) => (
