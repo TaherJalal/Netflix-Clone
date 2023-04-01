@@ -29,12 +29,12 @@ function index() {
   if (error) return 'An error has occurred: ' + error.message
 
   return (
-    <>
+    <div className='dark:bg-zinc-950 dark:text-white bg-white text-black'>
     <Nav />
       <div className='px-2 py-3 font-montserrat'>
 
-        <h2 className='text-base sm:text-base md:text-base lg:text-lg xl:text-2xl 2xl:text-2xl'>Trending Movie's</h2>
-          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 200}}>
+        <h2 className='text-base sm:text-base md:text-base lg:text-lg xl:text-2xl 2xl:text-2xl pb-3'>Trending Movie's</h2>
+          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 200 , arrows: false}}>
 
     {trendingMovies.map((movie) => (
             <SplideSlide key={movie.id}>
@@ -47,9 +47,9 @@ function index() {
         ))}
         </Splide> 
 
-        <h2 className='text-base sm:text-base md:text-base lg:text-lg xl:text-2xl 2xl:text-2xl'>Top Rated Movie's</h2>
-          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' ,rewindSpeed: 400}}>
-            
+        <h2 className='text-base sm:text-base md:text-base lg:text-lg xl:text-2xl 2xl:text-2xl pb-3'>Top Rated Movie's</h2>
+          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' ,rewindSpeed: 400, arrows: false}}>
+             
     {topRatedMovies.map((movie) => (
             <SplideSlide key={movie.id}>
               <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true}/>
@@ -62,8 +62,8 @@ function index() {
         </Splide> 
 
 
-        <h2 className='text-base sm:text-base md:text-base lg:text-lg xl:text-2xl 2xl:text-2xl'>Upcoming Movie's</h2>
-          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 300}}>
+        <h2 className='text-base sm:text-base md:text-base lg:text-lg xl:text-2xl 2xl:text-2xl pb-3'>Upcoming Movie's</h2>
+          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 300, arrows: false}}>
             
     {upcomingMovies.map((movie) => (
             <SplideSlide key={movie.id}>
@@ -77,8 +77,8 @@ function index() {
         </Splide> 
 
 
-        <h2 className='text-base sm:text-base md:text-base lg:text-lg xl:text-2xl 2xl:text-2xl'>Now Playing Movie's</h2>
-          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 200}}>
+        <h2 className='text-base sm:text-base md:text-base lg:text-lg xl:text-2xl 2xl:text-2xl pb-3'>Now Playing Movie's</h2>
+          <Splide aria-label="Trending Movies" options={{fixedWidth: "176px", gap: "16px" , rewind: true , pauseOnHover: true , autoplay: true , interval: 3000 , type: 'slide' , rewindSpeed: 200, arrows: false}}>
             
     {nowPlaying.map((movie) => (
             <SplideSlide key={movie.id}>
@@ -92,7 +92,7 @@ function index() {
         </Splide> 
 
     </div>
-    </>
+    </div>
   );
 }
 

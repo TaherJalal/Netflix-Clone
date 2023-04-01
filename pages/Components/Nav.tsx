@@ -11,8 +11,10 @@ function Nav() {
         </div>
         
 
-        <Link href={'auth/Signin'}>Sign-In / Register</Link>
-
+<div className='flex flex-nowrap gap-7'>
+  
+  <Link href={'auth/Signin'}>Sign-In / Register</Link>
+</div>
     </div>
   )
 }
