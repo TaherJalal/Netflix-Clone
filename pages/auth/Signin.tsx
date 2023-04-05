@@ -1,9 +1,11 @@
 import React from 'react'
+import Nav from '../Components/Nav'
 
 function Signin() {
   return (
-    <div className='font-montserrat'>
-      <section className=" dark:bg-zinc-950 dark:text-white bg-white text-black">
+    
+      <div className='font-montserrat dark:bg-zinc-950 dark:text-white bg-white text-black'>
+        <Nav />
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -41,7 +43,7 @@ function Signin() {
           </div>
       </div>
   </div>
-</section>
+
     </div>
   )
 }
