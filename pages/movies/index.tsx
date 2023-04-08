@@ -6,7 +6,6 @@ import Image from 'next/image'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
@@ -14,8 +13,12 @@ function classNames(...classes: string[]) {
 function index() {
   const {isLoading , error , data} = useQuery({
     queryKey: ['movieIndexData'],
-    queryFn: () => axios.get("http://localhost:3000/api/movie")
+    queryFn: () => axios.get("http://localhost:3000/api/movie", {
+      headers : {Authorization: localStorage.getItem("token")}
+    })
   })
+
+console.log(data)
 
 if (isLoading) return 'Loading...'
 

@@ -15,19 +15,15 @@ function Signin() {
     },[token])
 
 const post = async (e:any) => {
+    
     e.preventDefault()
     const { data } = await axios.post("http://localhost:3000/api/auth/signin", {
         emailAddress,
         password
       });
 
-    if(!data){
-        window.alert("wrong email or password")
-    }
     setToken(data)
     localStorage.setItem("token" , data.token)
-
-    
 }
 
 
