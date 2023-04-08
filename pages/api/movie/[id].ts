@@ -1,9 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
 import { prisma } from "../../../lib/prisma";
-import getMovie from "@/helpers/getmovie";
-import jwtDecode from "jwt-decode";
-import authUser from "@/helpers/auth";
+import getMovie from "../../../helper/getmovie";
+import authUser from "../../../helper/authuser";
 
 export default async function movie(req: NextApiRequest, res: NextApiResponse) {
   const API_KEY = process.env.API_KEY;

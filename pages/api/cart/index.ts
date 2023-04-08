@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "@/lib/prisma";
-import authUser from "@/helpers/auth";
+import authUser from "../../../helper/authuser";
+import getMovie from "@/helper/getmovie";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const token = req.headers["authorization"] as string;
@@ -15,22 +16,21 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
   const { id } = await authUser(token);
 
-  const cart = await prisma.cart.findUniqueOrThrow({
-    where: {
-      userID: id,
-    },
-  });
-
-  const balance = await prisma.user.findUniqueOrThrow({
+  const {cart,balance} = await prisma.user.findUniqueOrThrow({
     where: {
       id: id,
     },
+    include:{
+      cart: true
+    }
   });
 
+  const cartMovies = await Promise.all(cart?.moviesIDs.map(async (movie) => await getMovie(movie))!)
+
   res.json({
-    userCart: cart.moviesIDs,
-    userBalance: balance.balance,
+    userCart: cartMovies,
+    userBalance: balance,
   });
 }
 
-// change file name to index // no token / data directly inside res.json
+

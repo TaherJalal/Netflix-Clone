@@ -13,7 +13,7 @@ function profile() {
   return (
     <div className='dark:bg-zinc-950 dark:text-white bg-white text-black h-screen'>
         <Nav />
-        profile
+        
     </div>
   )
 }
