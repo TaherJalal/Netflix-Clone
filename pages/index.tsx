@@ -27,9 +27,16 @@ function index() {
   }) 
 
   
-  if (isLoading) return 'Loading...'
-
-  if (error) return 'An error has occurred: ' + error.message
+  if (isLoading) return ( 
+    <div className='dark:bg-zinc-950 dark:text-white bg-white text-black h-screen'>
+    Loading...
+    </div> )
+  
+    if (error) return ( 
+    <div className='dark:bg-zinc-950 dark:text-white bg-white text-black h-screen'>
+      {'An error has occurred: ' + error.message}
+    </div> 
+    )
 
   return (
     <div className='dark:bg-zinc-950 dark:text-white bg-white text-black'>
