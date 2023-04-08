@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "../../../lib/prisma";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import bcrypt from "bcrypt"
 
 export default async function login(req: NextApiRequest, res: NextApiResponse) {
   const secret = process.env.SECRET_KEY;
@@ -35,4 +35,6 @@ export default async function login(req: NextApiRequest, res: NextApiResponse) {
   }
 
   res.json({ token: jwt.sign(user.id, secret) });
+
+  console.log(jwt.sign(user.id, secret))
 }
