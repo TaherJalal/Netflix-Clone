@@ -15,7 +15,9 @@ function index() {
   const { isLoading, error } = useQuery({
     queryKey: ['landingPageData'],
     queryFn: () =>
-      axios.get('http://localhost:3000/api/landingpage'),
+      axios.get('http://localhost:3000/api/landingpage' , {
+         headers : {Authorization: localStorage.getItem("token")}
+      }),
       onSuccess: (data) => {
         setTrendingMovies(data.data[0].movies)
         settopRatedMovies(data.data[1].movies)
@@ -24,6 +26,7 @@ function index() {
       },
   }) 
 
+  
   if (isLoading) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
