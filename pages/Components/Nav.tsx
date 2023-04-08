@@ -9,7 +9,10 @@ function Nav() {
    setToken(localStorage.getItem("token")) 
 },[token])
 
-token ? console.log(true) : console.log(false)
+const logout = () => {
+  localStorage.removeItem("token")
+}
+
   return (
     <div className='py-3 px-5 flex justify-between font-semibold text-sm sm:text-sm md:text-base lg:text-lg xl:text-lg 2xl:text-lg font-montserrat dark:bg-zinc-950 dark:text-white'>
         <div className='flex flex-nowrap gap-7'>
@@ -24,10 +27,10 @@ token ? console.log(true) : console.log(false)
   {
     token ? (
       <div className='flex gap-5'>
-  <Link href={'user/cart'}>Cart</Link>
-  <Link href={'user/wishlist'}>Wishlist</Link>
-  <Link href={'user/profile'}>Profile</Link>
-
+  <Link href={'user/cart'} replace={true}>Cart</Link>
+  <Link href={'user/wishlist'} replace={true}>Wishlist</Link>
+  <Link href={'user/profile'} replace={true}>Profile</Link>
+  <Link href={"/"} onClick={logout}>Logout</Link>
       </div>
     ) : (
       <div>
