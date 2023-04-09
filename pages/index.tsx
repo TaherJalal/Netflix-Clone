@@ -26,6 +26,10 @@ function index() {
       },
   }) 
 
+  const goToMovieDetailsPage = (movieId:number) => {
+    window.location.href =`http://localhost:3000/movies/${movieId}`;
+  }
+
   
   if (isLoading) return ( 
     <div className='dark:bg-zinc-950 dark:text-white bg-white text-black h-screen'>
@@ -48,11 +52,13 @@ function index() {
 
     {trendingMovies.map((movie) => (
             <SplideSlide key={movie.id}>
+            
               <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true} />
-              <div className='flex flex-col gap-2 justify-center items-center text-white absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 hover:bg-black hover:bg-opacity-60'>
+              <div className='flex flex-col gap-2 justify-center items-center text-white absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 hover:bg-black hover:bg-opacity-60' onClick={()=> goToMovieDetailsPage(movie.id)}>
                 <h6 className='text-sm'>{movie.original_title}</h6>
                 <p className='text-xs'>{movie.overview}</p>
               </div>
+              
           </SplideSlide>
         ))}
         </Splide> 
@@ -62,8 +68,8 @@ function index() {
              
     {topRatedMovies.map((movie) => (
             <SplideSlide key={movie.id}>
-              <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true}/>
-              <div className='flex flex-col gap-2 justify-center items-center text-white absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 hover:bg-black hover:bg-opacity-60'>
+              <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true} />
+              <div className='flex flex-col gap-2 justify-center items-center text-white absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 hover:bg-black hover:bg-opacity-60' onClick={()=> goToMovieDetailsPage(movie.id)}>
                 <h6 className='text-sm'>{movie.original_title}</h6>
                 <p className='text-xs'>{movie.overview}</p>
               </div>
@@ -77,8 +83,8 @@ function index() {
             
     {upcomingMovies.map((movie) => (
             <SplideSlide key={movie.id}>
-              <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true}/>
-              <div className='flex flex-col gap-2 justify-center items-center text-white absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 hover:bg-black hover:bg-opacity-60'>
+              <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true} />
+              <div className='flex flex-col gap-2 justify-center items-center text-white absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 hover:bg-black hover:bg-opacity-60' onClick={()=> goToMovieDetailsPage(movie.id)}>
                 <h6 className='text-sm'>{movie.original_title}</h6>
                 <p className='text-xs'>{movie.overview}</p>
               </div>
@@ -92,8 +98,8 @@ function index() {
             
     {nowPlaying.map((movie) => (
             <SplideSlide key={movie.id}>
-              <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true}/>
-              <div className='flex flex-col gap-2 justify-center items-center text-white absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 hover:bg-black hover:bg-opacity-60'>
+              <Image src={movie.poster_path} width={500} height={500} alt="none" priority={true} />
+              <div className='flex flex-col gap-2 justify-center items-center text-white absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 hover:bg-black hover:bg-opacity-60' onClick={()=> goToMovieDetailsPage(movie.id)}>
                 <h6 className='text-sm'>{movie.original_title}</h6>
                 <p className='text-xs'>{movie.overview}</p>
               </div>
