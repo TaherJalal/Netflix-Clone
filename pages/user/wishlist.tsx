@@ -30,7 +30,7 @@ function cart() {
   </div> 
 )
   return (
-    <div className='dark:bg-zinc-950 dark:text-white bg-white text-black h-screen'>
+    <div className='dark:bg-zinc-950 dark:text-white bg-white text-black h-screen font-montserrat'>
       <Nav />
       <div className='flex gap-6 pl-10 pt-5'>
       {movies.map((movie:any) => (
