@@ -19,6 +19,8 @@ function movieId() {
         
     })
 
+    console.log(data)
+
     if (isLoading) return ( 
         <div className='dark:bg-zinc-950 dark:text-white bg-white text-black h-screen'>
         Loading...

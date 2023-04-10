@@ -18,11 +18,20 @@ function index() {
     })
   })
 
-console.log(data)
+  const goToMovieDetailsPage = (movieId:number) => {
+    window.location.href =`http://localhost:3000/movies/${movieId}`;
+  }
 
-if (isLoading) return 'Loading...'
+if (isLoading) return ( 
+  <div className='dark:bg-zinc-950 dark:text-white bg-white text-black h-screen'>
+  Loading...
+  </div> )
 
-if (error) return 'An error has occurred: ' + error.message
+  if (error) return ( 
+  <div className='dark:bg-zinc-950 dark:text-white bg-white text-black h-screen'>
+    {'An error has occurred: ' + error.message}
+  </div> 
+  )
 
 return (
   <div className=' dark:bg-zinc-950 dark:text-white bg-white text-black'>
@@ -145,7 +154,7 @@ return (
         <div className='relative'>
           <Image src={"https://image.tmdb.org/t/p/original" + movie.poster_path == null ? "/next.svg" : "https://image.tmdb.org/t/p/original" + movie.poster_path} width={224} height={224} alt="none" priority={true} />
 
-          <div className='w-56 flex flex-col justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 hover:bg-black hover:bg-opacity-60'>
+          <div className='w-56 flex flex-col justify-center items-center absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-300 hover:bg-black hover:bg-opacity-60' onClick={()=> goToMovieDetailsPage(movie.id)}>
               <h5 className='text-sm'>{movie.original_title}</h5>
               <p className='text-xs'>{movie.overview}</p>
           </div>
