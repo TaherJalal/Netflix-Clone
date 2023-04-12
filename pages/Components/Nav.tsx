@@ -18,7 +18,7 @@ const logout = () => {
         <div className='flex flex-nowrap gap-7'>
             <Link href={'/'}>Home</Link>
             <Link href={'/movies'}>Movie's</Link>
-            <Link href={'/shows'}>Show's</Link>
+            {/* <Link href={'/shows'}>Show's</Link> */}
         </div>
         
 
