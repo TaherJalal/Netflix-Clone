@@ -11,6 +11,7 @@ function Nav() {
 
 const logout = () => {
   localStorage.removeItem("token")
+  window.location.reload()
 }
 
   return (
