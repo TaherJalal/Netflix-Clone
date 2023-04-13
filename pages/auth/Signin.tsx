@@ -24,6 +24,7 @@ const post = async (e:any) => {
 
     setToken(data)
     localStorage.setItem("token" , data.token)
+    window.location.reload()
 }
 
 
