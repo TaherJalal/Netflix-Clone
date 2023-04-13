@@ -52,7 +52,7 @@ const post = async (e:any) => {
                   </div>
           
                   
-                  <button  className="w-full text-white bg-cyan-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create an account</button>
+                  <button  className="w-full text-white bg-cyan-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                       Don't have an account? <Link href="Signup" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign-Up</Link>
                   </p>
