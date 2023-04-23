@@ -28,9 +28,9 @@ const logout = () => {
   {
     token ? (
       <div className='flex gap-5'>
-  <Link href={'user/cart'} replace={true}>Cart</Link>
-  <Link href={'user/wishlist'} replace={true}>Wishlist</Link>
-  <Link href={'user/profile'} replace={true}>Profile</Link>
+  <Link href={'/user/cart'} replace={true}>Cart</Link>
+  <Link href={'/user/wishlist'} replace={true}>Wishlist</Link>
+  <Link href={'/user/profile'} replace={true}>Profile</Link>
   <Link href={"/"} onClick={logout}>Logout</Link>
       </div>
     ) : (
