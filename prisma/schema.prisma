@@ -1,5 +1,5 @@
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -13,62 +13,62 @@ enum Role {
 }
 
 model User {
-  id           String      @id @default(auto()) @map("_id") @db.ObjectId
+  id          String      @id @default(uuid())
   firstName    String
   lastName     String
   emailAddress String      @unique
   password     String
   balance      Float       @default(100)
-  createdAt    DateTime    @default(now()) @map("created_at")
-  updatedAt    DateTime    @updatedAt @map("updated_at")
-  wishlist     wishlist?
+  created_at   DateTime    @default(now()) @map("created_at")
+  updated_at   DateTime    @updatedAt @map("updated_at")
+  wishlist     Wishlist?
   purchases    Purchases[]
-  reviews      review[]
+  reviews      Review[]
   cart         Cart?
   role         Role        @default(DEFAULT)
 }
 
-model wishlist {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  user      User     @relation(fields: [userID], references: [id], onDelete: Cascade)
-  userID    String   @unique @db.ObjectId
+model Wishlist {
+  id       String   @id  @default(uuid())
+  userID    String   @unique 
   moviesIDs String[]
+  user      User     @relation(fields: [userID], references: [id], onDelete: Cascade)
 }
 
 model Purchases {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  user      User     @relation(fields: [userID], references: [id], onDelete: Cascade)
-  userID    String   @db.ObjectId
-  moviesIDs String[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  amount    Float
+  id        String   @id @default(uuid())
+  userID     String   
+  moviesIDs  String[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  amount     Float
+  user       User     @relation(fields: [userID], references: [id], onDelete: Cascade)
 }
 
-model review {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  user    User   @relation(fields: [userID], references: [id], onDelete: Cascade)
-  userID  String @unique @db.ObjectId
-  movieID String
-  rate    Int
-  comment String
+model Review {
+  id      String @id @default(uuid())
+  userID   String @unique 
+  movieID  String
+  rate     Int
+  comment  String
+  user     User   @relation(fields: [userID], references: [id], onDelete: Cascade)
 }
 
 model Cart {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  user      User     @relation(fields: [userID], references: [id], onDelete: Cascade)
-  userID    String   @unique @db.ObjectId
+  id       String   @id  @default(uuid())
+  userID    String   @unique 
   moviesIDs String[]
+  user      User     @relation(fields: [userID], references: [id], onDelete: Cascade)
 }
 
 model Discount {
-  id     String @id @default(auto()) @map("_id") @db.ObjectId
-  userID String @db.ObjectId
-  amount Float  @default(30)
-  code   String
+  id     String @id  @default(uuid())
+  userID  String 
+  amount  Float  @default(30)
+  code    String
 }
 
 model Movie {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  id   String @id  @default(uuid())
   price Float  @default(10)
 }
